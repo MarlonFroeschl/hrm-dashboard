@@ -6,6 +6,7 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
+  workflow_dispatch:  # Manually trigger
 
 # Verhindert parallele Runs auf demselben Branch (z.B. schnelle aufeinanderfolgende Pushes)
 concurrency:
