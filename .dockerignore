@@ -1,0 +1,105 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# .dockerignore – Monorepo (Python Backend + Node.js Frontend)
+# Verhindert dass unnötige Dateien in den Build-Kontext gelangen
+# Kleinerer Build-Kontext = schnellerer Docker-Build + kein versehentlicher
+# Secret-Leak (.env, Credentials) ins Image
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ─── Secrets & Environment ────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+# .env.example ist erlaubt (keine Secrets)
+
+# ─── Git ──────────────────────────────────────────────────────────────────────
+.git
+.gitignore
+.gitattributes
+
+# ─── Node.js / Frontend ───────────────────────────────────────────────────────
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn
+frontend/node_modules
+frontend/.next
+frontend/dist
+frontend/build
+frontend/coverage
+frontend/.vite
+.vite
+
+# ─── Python / Backend ─────────────────────────────────────────────────────────
+__pycache__
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+.Python
+.venv
+venv
+env
+.env
+backend/.venv
+backend/venv
+backend/__pycache__
+*.egg-info
+.eggs
+dist
+build
+*.dist-info
+
+# ─── Tests ────────────────────────────────────────────────────────────────────
+tests
+test
+**/tests
+**/test
+coverage
+.coverage
+.coverage.*
+htmlcov
+pytest_cache
+.pytest_cache
+playwright-report
+test-results
+
+# ─── Dokumentation ────────────────────────────────────────────────────────────
+docs
+*.md
+# README.md nicht ins Image
+
+# ─── IDE & Editor ─────────────────────────────────────────────────────────────
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ─── Logs & Temporäre Dateien ─────────────────────────────────────────────────
+*.log
+*.log.*
+logs
+tmp
+temp
+.tmp
+
+# ─── CI/CD ────────────────────────────────────────────────────────────────────
+.github
+.gitlab-ci.yml
+.woodpecker.yml
+Jenkinsfile
+
+# ─── Docker ───────────────────────────────────────────────────────────────────
+# docker-compose.yml gehört nicht ins Image (nur Build-Kontext-relevant)
+docker-compose*.yml
+.dockerignore
+
+# ─── Backups ──────────────────────────────────────────────────────────────────
+*.bak
+*_old
+*_backup
+*.orig

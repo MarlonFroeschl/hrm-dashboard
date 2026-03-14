@@ -12,6 +12,7 @@ from sqlalchemy import JSON, String, create_engine, event
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.pool import StaticPool
 
 from app.api.v1.dependencies import get_current_user
 from app.core.security import create_access_token
@@ -43,6 +44,7 @@ def _make_engine():
     engine = create_engine(
         "sqlite:///:memory:",
         connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
     )
 
     @event.listens_for(engine, "connect")
