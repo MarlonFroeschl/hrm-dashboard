@@ -1,11 +1,11 @@
 name: CI Pipeline
 
-# Läuft bei jedem Push auf main/develop und bei Pull Requests
+# Läuft bei jedem Push und Pull Requests
 on:
   push:
-    branches: [main, develop]
+    branches: ["**"]
   pull_request:
-    branches: [main, develop]
+    branches: ["**"]
   workflow_dispatch:  # Manually trigger
 
 # Verhindert parallele Runs auf demselben Branch (z.B. schnelle aufeinanderfolgende Pushes)
