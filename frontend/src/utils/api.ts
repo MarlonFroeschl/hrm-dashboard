@@ -1,9 +1,11 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// Use relative path when behind nginx reverse proxy, fallback to localhost for dev
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api/v1';
+const AUTH_BASE_URL = import.meta.env.VITE_API_URL || '';
 
 export const apiClient: AxiosInstance = axios.create({
-  baseURL: `${API_BASE_URL}/api/v1`,
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -33,7 +35,7 @@ apiClient.interceptors.response.use(
       const refreshToken = localStorage.getItem('refresh_token');
       if (refreshToken) {
         try {
-          const response = await axios.post(`${API_BASE_URL}/api/v1/auth/refresh`, {
+          const response = await axios.post(`${AUTH_BASE_URL}/api/v1/auth/refresh`, {
             refresh_token: refreshToken,
           });
 
