@@ -18,8 +18,6 @@ Coverage:
 
 from unittest.mock import MagicMock
 
-import pytest
-
 from app.models.audit_log import AuditLog
 from app.models.document import Document
 from app.models.employee_profile import EmployeeProfile, ITAccessLevel
