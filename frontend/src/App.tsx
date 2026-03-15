@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { ApplicantListPage, ApplicantDetailPage } from "./pages/recruiting";
+import { ApplicantListPage, ApplicantDetailPage, ApplicantCreatePage } from "./pages/recruiting";
 
 export default function App() {
   return (
@@ -7,6 +7,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/recruiting" replace />} />
         <Route path="/recruiting" element={<ApplicantListPage />} />
+        <Route path="/recruiting/new" element={<ApplicantCreatePage />} />
         <Route path="/recruiting/:id" element={<ApplicantDetailPage />} />
       </Routes>
     </BrowserRouter>
