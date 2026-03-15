@@ -10,6 +10,23 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from app.core.config import settings  # noqa: E402
 from app.db.base import Base  # noqa: E402
 
+# Import all models so Alembic can detect schema changes via autogenerate
+from app.models import (  # noqa: E402, F401
+    AuditAction,
+    AuditLog,
+    Document,
+    EmployeeProfile,
+    ITAccessLevel,
+    EntryType,
+    KnowledgeEntry,
+    OffboardingPlan,
+    OnboardingTask,
+    TaskStatus,
+    Person,
+    PersonStatus,
+    PersonType,
+)
+
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 
